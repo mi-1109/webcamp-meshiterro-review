@@ -1,26 +1,32 @@
-<h2>Log in</h2>
+<div class="card py-5">
+  <div class="card-body w-50 mx-auto p-0 shadow-lg">
+    <h4 class="text-center pt-4 pb-4 bg-light">User Login</h4>
+    <p class="text-center pt-3 pb-3 mb-0">氏名、メールアドレスと</br>パスワードを入力してください</p>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form-body pl-3 pr-3 pb-4">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+             <span class="input-group-text" area-hidden="true"><i class="fas fa-envelope"></i></span>
+          </div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "form-control" %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+             <span class="input-group-text" area-hidden="true"><i class="fas fa-lock"></i></span>
+          </div>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: "form-control" %>
+        </div>
+
+        <%= f.submit "Sign in", class:"btn btn-sm btn-info btn-block" %>
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+
+
