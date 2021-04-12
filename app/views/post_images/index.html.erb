@@ -1,0 +1,8 @@
+<% @post_images.each do |post_image| %>
+  <a><%= post_image.shop_name %>
+  <p>By | コメント </p>
+  <span>
+    <%=link_to list.title, todolist_path(list.id) %>
+  </span>
+  <p>画像</p>
+  <%= attachment_image_tag list, :image, :fill, 100, 100, format: 'jpeg' %><% end %>
